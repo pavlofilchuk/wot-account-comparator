@@ -1,0 +1,57 @@
+.search
+  padding: 15px 0
+  text-align: center
+  background-color: #0a161f
+  margin: 0 60px
+
+  &__input
+    background: rgba(0,0,0,0.2)
+    border: 1px solid #212c33
+    box-sizing: border-box
+    font-family: Arial,"Helvetica CY",Helvetica,sans-serif
+    font-size: 16px
+    color: #ccc
+    padding: 0 10px
+    height: 36px
+    transition: border-color .3s, color .3s
+    outline: unset
+
+    &:hover
+      border-color: #3b444a
+      color: #fff
+
+    &-wrap
+      display: inline-block
+      position: relative
+
+.search-result
+
+  &__wrapper
+    display: flex
+    background: #212c33
+
+  &__list
+    margin: 0
+    list-style: none
+    width: 100%
+    padding: 0
+
+  &__item
+    margin: 10px 0
+    text-align: center
+
+    a
+      color: #ccc
+      transition: color .3s
+
+      &:hover
+        color: #fff
+
+.error-message
+  display: block
+  margin: 20px
+  padding: 10px
+  font-size: 14px
+  color: #fff
+  text-align: center
+  background-color: #f00

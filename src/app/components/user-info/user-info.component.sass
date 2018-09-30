@@ -1,0 +1,82 @@
+.user-info
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+  &__main-info
+    display: flex
+    align-items: center
+
+  &__rating-info
+    margin-right: 60px
+
+    .ng-select.stats 
+      border: 0px
+      min-height: 0px
+      border-radius: 0px
+
+    .ng-select .ng-select-container
+      background: rgba(0,0,0,0.2)
+      border: 1px solid #212c33
+    
+    .ng-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option
+      background: #212c33
+
+  &__nickname
+    font-size: 27px
+    margin-bottom: 0
+
+  &__logo
+    display: flex
+    width: 222px
+    height: 248px
+
+  &__rating
+    display: flex
+    align-items: center
+    text-align: right
+
+    &-value
+      font-size: 27px
+      font-weight: bold
+      color: #ffbe4c
+
+.description-table
+  width: 100%
+  border-spacing: 0px
+  background-color: #0a161f
+
+  &__wrapper
+    padding: 0 60px 30px
+
+  th
+    background: #14232e
+    border-bottom: 1px solid #374146
+    padding: 9px 20px 8px 19px
+    vertical-align: middle
+    white-space: nowrap
+    color: #ccc
+    font-weight: bold
+    text-align: left
+
+  td
+    width: 50%
+    border-top: 1px solid rgba(55,65,70,0.5)
+    padding: 20px 20px 15px 19px
+    vertical-align: top
+    color: #ccc
+
+@media screen and (max-width: 768px)
+  .user-info
+    flex-direction: column
+
+    &__main-info
+      flex-direction: column
+      text-align: center
+
+    &__rating-info
+      margin: 0
+      text-align: center
+    
+    &__nickname
+      margin-top: -10px

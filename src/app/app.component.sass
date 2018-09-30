@@ -1,0 +1,42 @@
+\:host
+  display: block
+  min-height: 100vh
+  background: #212c33
+
+// Template sample
+//
+// .loading-dots
+//   .loading-dots__item.loading-dots__item--1
+//   .loading-dots__item.loading-dots__item--2
+//   .loading-dots__item.loading-dots__item--3
+
+.loading-dots
+  position: absolute
+  display: inline-block
+  top: 50%
+  right: 8px
+  width: 24px
+  text-align: center
+  transform: translateY(-50%)
+
+  &__item
+    display: inline-block
+    width: 8px
+    height: 8px
+    border-radius: 50%
+    background-color: #fff
+    animation: loading-dots-bounce-delay 1.4s infinite ease-in-out both
+
+    &--1
+      animation-delay: -0.32s
+
+
+    &--2
+      animation-delay: -0.16s
+
+@keyframes loading-dots-bounce-delay
+  0%, 80%, 100%
+    transform: scale(0)
+
+  40%
+    transform: scale(1)

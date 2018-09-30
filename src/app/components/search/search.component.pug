@@ -1,0 +1,25 @@
+form.search(
+  name="form",
+  [formGroup]="form"
+)
+  .search__input-wrap
+    input.search__input(
+      type="text",
+      placeholder="Player name...",
+      formControlName="query"
+    )
+    .loading-dots(*ngIf="isInProgress")
+      .loading-dots__item.loading-dots__item--1
+      .loading-dots__item.loading-dots__item--2
+      .loading-dots__item.loading-dots__item--3
+.error-message(
+  *ngIf="errorMessage",
+  [@fade]=""
+) {{ errorMessage }}
+.search-result__wrapper
+  ul.search-result__list(
+    *ngIf="!isInProgress",
+    [@fade]=""
+  )
+    li.search-result__item(*ngFor="let player of players")
+      a([routerLink]="[player.account_id]") {{ player.nickname }}

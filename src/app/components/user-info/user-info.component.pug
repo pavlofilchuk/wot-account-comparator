@@ -1,0 +1,133 @@
+.user-info
+  .user-info__main-info
+    a([routerLink]=['/']).user-info__logo
+      img(src="https://ru-wotp.wgcdn.co/static/5.28.0_293a36/wotp_static/img/user_profile/frontend/scss/img/rating-ribbon.png", alt="")
+    .user-info__description
+      p.user-info__nickname {{ user.nickname }}
+      p.user-info__created-at Created At:&nbsp;
+        span {{ user.created_at | date }}
+      p.user-info__created-at Last Battle Time:&nbsp;
+        span {{ user.last_battle_time | date: 'medium' }}
+  .user-info__rating-info
+    p.user-info__rating Global Rating:&nbsp;
+      span.user-info__rating-value {{ user.global_rating }}
+    p.
+    ng-select.stats(
+      [items]="statsTypes",
+      [(ngModel)]="selectedCategory",
+      (change)="onSelect($event)",
+      (clear)="onClear()"
+    )
+.description-table__wrapper
+  table.description-table
+    tr
+      th Field
+      th Description  
+    tr
+      td avg_damage_assisted 
+      td {{ stats.avg_damage_assisted }}
+    tr
+      td avg_damage_assisted_radio 
+      td {{ stats.avg_damage_assisted_radio }}
+    tr
+      td avg_damage_assisted_track 
+      td {{ stats.avg_damage_assisted_track }}
+    tr
+      td avg_damage_blocked 
+      td {{ stats.avg_damage_blocked }}
+    tr
+      td battle_avg_xp 
+      td {{ stats.battle_avg_xp }}
+    tr
+      td battles 
+      td {{ stats.battles }}
+    tr
+      td battles_on_stunning_vehicles 
+      td {{ stats.battles_on_stunning_vehicles }}
+    tr
+      td capture_points 
+      td {{ stats.capture_points }}
+    tr
+      td damage_dealt 
+      td {{ stats.damage_dealt }}
+    tr
+      td damage_received 
+      td {{ stats.damage_received }}
+    tr
+      td direct_hits_received 
+      td {{ stats.direct_hits_received }}
+    tr
+      td draws 
+      td {{ stats.draws }}
+    tr
+      td dropped_capture_points 
+      td {{ stats.dropped_capture_points }}
+    tr
+      td explosion_hits 
+      td {{ stats.explosion_hits }}
+    tr
+      td explosion_hits_received 
+      td {{ stats.explosion_hits_received }}
+    tr
+      td frags 
+      td {{ stats.frags }}
+    tr
+      td hits 
+      td {{ stats.hits }}
+    tr
+      td hits_percents 
+      td {{ stats.hits_percents }}
+    tr
+      td losses 
+      td {{ stats.losses }}
+    tr
+      td max_damage 
+      td {{ stats.max_damage }}
+    tr
+      td max_damage_tank_id 
+      td {{ stats.max_damage_tank_id }}
+    tr
+      td max_frags 
+      td {{ stats.max_frags }}
+    tr
+      td max_frags_tank_id 
+      td {{ stats.max_frags_tank_id }}
+    tr
+      td max_xp 
+      td {{ stats.max_xp }}
+    tr
+      td max_xp_tank_id 
+      td {{ stats.max_xp_tank_id }}
+    tr
+      td no_damage_direct_hits_received 
+      td {{ stats.no_damage_direct_hits_received }}
+    tr
+      td piercings 
+      td {{ stats.piercings }}
+    tr
+      td piercings_received 
+      td {{ stats.piercings_received }}
+    tr
+      td shots 
+      td {{ stats.shots }}
+    tr
+      td spotted 
+      td {{ stats.spotted }}
+    tr
+      td stun_assisted_damage 
+      td {{ stats.stun_assisted_damage }}
+    tr
+      td stun_number 
+      td {{ stats.stun_number }}
+    tr
+      td survived_battles 
+      td {{ stats.survived_battles }}
+    tr
+      td tanking_factor 
+      td {{ stats.tanking_factor }}
+    tr
+      td wins 
+      td {{ stats.wins }}
+    tr
+      td xp 
+      td {{ stats.xp }}
