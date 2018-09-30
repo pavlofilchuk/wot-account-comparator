@@ -1,5 +1,5 @@
 import 'rxjs/add/operator/map';
-import { of } from 'rxjs';
+import { partition, compact, maxBy } from 'lodash-es';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class SearchService {
+  
+  store = [];
 
   constructor(
     private http: HttpClient,
@@ -44,5 +46,26 @@ export class SearchService {
       .http
       .get('account/info/', { params: { account_id } })
       .map((response: any) => this.prepareUserInfo(response, account_id));
+  }
+
+  compare(current_user_id, field_name, useStats?, selectedCategory?) {
+    if (!this.store.length) { return; }
+
+    const store = compact(this.store);
+
+    if (store.length !== 2) { return; }
+
+    const splited = partition(store, (user) => {
+      return user.account_id === current_user_id; 
+    });
+
+    const current = splited[0];
+    const others = splited[1];
+
+    if (!useStats) {
+      return current[0][field_name] > others[0][field_name];
+    } else {
+      return current[0]['statistics'][selectedCategory][field_name] > others[0]['statistics'][selectedCategory][field_name];
+    }
   }
 }

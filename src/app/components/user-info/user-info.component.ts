@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewEncapsulation  } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, OnChanges  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SearchService } from '../../services/search/search.service';
 
 @Component({
   selector: 'app-user-info',
@@ -7,9 +8,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./user-info.component.sass'],
   encapsulation: ViewEncapsulation.None
 })
-export class UserInfoComponent implements OnInit {
+export class UserInfoComponent implements OnInit, OnChanges {
 
-  user: any;
+  @Input() userData;
+  
+  isCompareProcess = false;
+  user: any = {};
   stats: any = {};
   statsTypes = [
     'all',
@@ -25,14 +29,26 @@ export class UserInfoComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private searchService: SearchService,
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(() => {
-      this.user = this.route.snapshot.data.user;
+      if (this.route.snapshot.data.user) {
+        this.user = this.route.snapshot.data.user;
+        this.stats = this.user.statistics['all'];
+      }
     });
+  }
 
-    this.stats = this.user.statistics['all'];
+  ngOnChanges(changes) {
+    const user = changes.userData;
+
+    if (user.currentValue) {
+      this.isCompareProcess = true;
+      this.user = user.currentValue;
+      this.stats = this.user.statistics['all'];
+    }
   }
 
   onSelect(value) {
@@ -41,6 +57,11 @@ export class UserInfoComponent implements OnInit {
 
   onClear() {
     this.stats = this.user.statistics['all'];
+  }
+
+  compare(id, name, useStats) {
+    if (!this.isCompareProcess) { return; }
+    return this.searchService.compare(id, name, useStats, this.selectedCategory);
   }
 
 }

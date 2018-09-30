@@ -1,10 +1,11 @@
 import { EMPTY } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { debounceTime, tap, switchMap, distinctUntilChanged } from 'rxjs/operators';
 
 import { SearchService } from '../../services/search/search.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -20,6 +21,8 @@ import { SearchService } from '../../services/search/search.service';
   ],
 })
 export class SearchComponent implements OnInit {
+  @Input() mode;
+  @Output() userId = new EventEmitter();
 
   form: FormGroup;
   players: any;
@@ -29,6 +32,7 @@ export class SearchComponent implements OnInit {
   constructor(
     private searchService: SearchService,
     private builder: FormBuilder,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -69,6 +73,14 @@ export class SearchComponent implements OnInit {
         }),
       )
       .subscribe();
+  }
+
+  showUser(id) {
+    if (this.mode === "compare") {
+      this.userId.emit(id);
+    } else {
+      this.router.navigate(['user/' + id]);
+    }
   }
 
 }

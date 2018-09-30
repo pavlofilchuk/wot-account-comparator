@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { SearchComponent } from './components/search/search.component';
 import { HeaderComponent } from './components/header/header.component';
+import { CompareComponent } from './components/compare/compare.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HeaderComponent } from './components/header/header.component';
     UserInfoComponent,
     SearchComponent,
     HeaderComponent,
+    CompareComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -10,7 +10,10 @@
         span {{ user.last_battle_time | date: 'medium' }}
   .user-info__rating-info
     p.user-info__rating Global Rating:&nbsp;
-      span.user-info__rating-value {{ user.global_rating }}
+      span.user-info__rating-value(
+        [class.isBigger]="compare(user.account_id, 'global_rating', false)",
+        [class.isSmaller]="!compare(user.account_id, 'global_rating', false)"
+      ) {{ user.global_rating }}
     p.
     ng-select.stats(
       [items]="statsTypes",
@@ -25,109 +28,217 @@
       th Description  
     tr
       td avg_damage_assisted 
-      td {{ stats.avg_damage_assisted }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'avg_damage_assisted', true)",
+        [class.isSmaller]="!compare(user.account_id, 'avg_damage_assisted', true)"
+      ) {{ stats?.avg_damage_assisted }}
     tr
       td avg_damage_assisted_radio 
-      td {{ stats.avg_damage_assisted_radio }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'avg_damage_assisted_radio', true)",
+        [class.isSmaller]="!compare(user.account_id, 'avg_damage_assisted_radio', true)"
+      ) {{ stats?.avg_damage_assisted_radio }}
     tr
       td avg_damage_assisted_track 
-      td {{ stats.avg_damage_assisted_track }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'avg_damage_assisted_track', true)",
+        [class.isSmaller]="!compare(user.account_id, 'avg_damage_assisted_track', true)"
+      ) {{ stats?.avg_damage_assisted_track }}
     tr
       td avg_damage_blocked 
-      td {{ stats.avg_damage_blocked }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'avg_damage_blocked', true)",
+        [class.isSmaller]="!compare(user.account_id, 'avg_damage_blocked', true)"
+      ) {{ stats?.avg_damage_blocked }}
     tr
       td battle_avg_xp 
-      td {{ stats.battle_avg_xp }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'battle_avg_xp', true)",
+        [class.isSmaller]="!compare(user.account_id, 'battle_avg_xp', true)"
+      ) {{ stats?.battle_avg_xp }}
     tr
       td battles 
-      td {{ stats.battles }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'battles', true)",
+        [class.isSmaller]="!compare(user.account_id, 'battles', true)"
+      ) {{ stats?.battles }}
     tr
       td battles_on_stunning_vehicles 
-      td {{ stats.battles_on_stunning_vehicles }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'battles_on_stunning_vehicles', true)",
+        [class.isSmaller]="!compare(user.account_id, 'battles_on_stunning_vehicles', true)"
+      ) {{ stats?.battles_on_stunning_vehicles }}
     tr
       td capture_points 
-      td {{ stats.capture_points }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'capture_points', true)",
+        [class.isSmaller]="!compare(user.account_id, 'capture_points', true)"
+      ) {{ stats?.capture_points }}
     tr
       td damage_dealt 
-      td {{ stats.damage_dealt }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'damage_dealt', true)",
+        [class.isSmaller]="!compare(user.account_id, 'damage_dealt', true)"
+      ) {{ stats?.damage_dealt }}
     tr
       td damage_received 
-      td {{ stats.damage_received }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'damage_received', true)",
+        [class.isSmaller]="!compare(user.account_id, 'damage_received', true)"
+      ) {{ stats?.damage_received }}
     tr
       td direct_hits_received 
-      td {{ stats.direct_hits_received }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'direct_hits_received', true)",
+        [class.isSmaller]="!compare(user.account_id, 'direct_hits_received', true)"
+      ) {{ stats?.direct_hits_received }}
     tr
       td draws 
-      td {{ stats.draws }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'draws', true)",
+        [class.isSmaller]="!compare(user.account_id, 'draws', true)"
+      ) {{ stats?.draws }}
     tr
       td dropped_capture_points 
-      td {{ stats.dropped_capture_points }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'dropped_capture_points', true)",
+        [class.isSmaller]="!compare(user.account_id, 'dropped_capture_points', true)"
+      ) {{ stats?.dropped_capture_points }}
     tr
       td explosion_hits 
-      td {{ stats.explosion_hits }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'explosion_hits', true)",
+        [class.isSmaller]="!compare(user.account_id, 'explosion_hits', true)"
+      ) {{ stats?.explosion_hits }}
     tr
       td explosion_hits_received 
-      td {{ stats.explosion_hits_received }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'explosion_hits_received', true)",
+        [class.isSmaller]="!compare(user.account_id, 'explosion_hits_received', true)"
+      ) {{ stats?.explosion_hits_received }}
     tr
       td frags 
-      td {{ stats.frags }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'frags', true)",
+        [class.isSmaller]="!compare(user.account_id, 'frags', true)"
+      ) {{ stats?.frags }}
     tr
       td hits 
-      td {{ stats.hits }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'hits', true)",
+        [class.isSmaller]="!compare(user.account_id, 'hits', true)"
+      ) {{ stats?.hits }}
     tr
       td hits_percents 
-      td {{ stats.hits_percents }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'hits_percents', true)",
+        [class.isSmaller]="!compare(user.account_id, 'hits_percents', true)"
+      ) {{ stats?.hits_percents }}
     tr
       td losses 
-      td {{ stats.losses }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'losses', true)",
+        [class.isSmaller]="!compare(user.account_id, 'losses', true)"
+      ) {{ stats?.losses }}
     tr
       td max_damage 
-      td {{ stats.max_damage }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'max_damage', true)",
+        [class.isSmaller]="!compare(user.account_id, 'max_damage', true)"
+      ) {{ stats?.max_damage }}
     tr
       td max_damage_tank_id 
-      td {{ stats.max_damage_tank_id }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'max_damage_tank_id', true)",
+        [class.isSmaller]="!compare(user.account_id, 'max_damage_tank_id', true)"
+      ) {{ stats?.max_damage_tank_id }}
     tr
       td max_frags 
-      td {{ stats.max_frags }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'max_frags', true)",
+        [class.isSmaller]="!compare(user.account_id, 'max_frags', true)"
+      ) {{ stats?.max_frags }}
     tr
       td max_frags_tank_id 
-      td {{ stats.max_frags_tank_id }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'max_frags_tank_id', true)",
+        [class.isSmaller]="!compare(user.account_id, 'max_frags_tank_id', true)"
+      ) {{ stats?.max_frags_tank_id }}
     tr
       td max_xp 
-      td {{ stats.max_xp }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'max_xp', true)",
+        [class.isSmaller]="!compare(user.account_id, 'max_xp', true)"
+      ) {{ stats?.max_xp }}
     tr
       td max_xp_tank_id 
-      td {{ stats.max_xp_tank_id }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'max_xp_tank_id', true)",
+        [class.isSmaller]="!compare(user.account_id, 'max_xp_tank_id', true)"
+      ) {{ stats?.max_xp_tank_id }}
     tr
       td no_damage_direct_hits_received 
-      td {{ stats.no_damage_direct_hits_received }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'no_damage_direct_hits_received', true)",
+        [class.isSmaller]="!compare(user.account_id, 'no_damage_direct_hits_received', true)"
+      ) {{ stats?.no_damage_direct_hits_received }}
     tr
       td piercings 
-      td {{ stats.piercings }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'piercings', true)",
+        [class.isSmaller]="!compare(user.account_id, 'piercings', true)"
+      ) {{ stats?.piercings }}
     tr
       td piercings_received 
-      td {{ stats.piercings_received }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'piercings_received', true)",
+        [class.isSmaller]="!compare(user.account_id, 'piercings_received', true)"
+      ) {{ stats?.piercings_received }}
     tr
       td shots 
-      td {{ stats.shots }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'shots', true)",
+        [class.isSmaller]="!compare(user.account_id, 'shots', true)"
+      ) {{ stats?.shots }}
     tr
       td spotted 
-      td {{ stats.spotted }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'spotted', true)",
+        [class.isSmaller]="!compare(user.account_id, 'spotted', true)"
+      ) {{ stats?.spotted }}
     tr
       td stun_assisted_damage 
-      td {{ stats.stun_assisted_damage }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'stun_assisted_damage', true)",
+        [class.isSmaller]="!compare(user.account_id, 'stun_assisted_damage', true)"
+      ) {{ stats?.stun_assisted_damage }}
     tr
       td stun_number 
-      td {{ stats.stun_number }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'stun_number', true)",
+        [class.isSmaller]="!compare(user.account_id, 'stun_number', true)"
+      ) {{ stats?.stun_number }}
     tr
       td survived_battles 
-      td {{ stats.survived_battles }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'survived_battles', true)",
+        [class.isSmaller]="!compare(user.account_id, 'survived_battles', true)"
+      ) {{ stats?.survived_battles }}
     tr
       td tanking_factor 
-      td {{ stats.tanking_factor }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'tanking_factor', true)",
+        [class.isSmaller]="!compare(user.account_id, 'tanking_factor', true)"
+      ) {{ stats?.tanking_factor }}
     tr
       td wins 
-      td {{ stats.wins }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'wins', true)",
+        [class.isSmaller]="!compare(user.account_id, 'wins', true)"
+      ) {{ stats?.wins }}
     tr
       td xp 
-      td {{ stats.xp }}
+      td(
+        [class.isBigger]="compare(user.account_id, 'xp', true)",
+        [class.isSmaller]="!compare(user.account_id, 'xp', true)"
+      ) {{ stats?.xp }}

@@ -1,0 +1,7 @@
+.compare
+  .compare__col
+    app-search([mode]="'compare'", (userId)="onUserIdChange($event, 'first')")
+    app-user-info([userData]="first", *ngIf="first")
+  .compare__col
+    app-search([mode]="'compare'", (userId)="onUserIdChange($event, 'second')")
+    app-user-info([userData]="second", *ngIf="second")

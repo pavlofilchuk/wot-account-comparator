@@ -22,4 +22,4 @@ form.search(
     [@fade]=""
   )
     li.search-result__item(*ngFor="let player of players")
-      a([routerLink]="[player.account_id]") {{ player.nickname }}
+      p((click)="showUser(player.account_id)") {{ player.nickname }}
