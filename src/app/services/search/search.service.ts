@@ -63,9 +63,15 @@ export class SearchService {
     const others = splited[1];
 
     if (!useStats) {
-      return current[0][field_name] > others[0][field_name];
+      return {
+        'isBigger': current[0][field_name] > others[0][field_name],
+        'isSmaller': current[0][field_name] < others[0][field_name],
+      };
     } else {
-      return current[0]['statistics'][selectedCategory][field_name] > others[0]['statistics'][selectedCategory][field_name];
+      return {
+        'isBigger': current[0]['statistics'][selectedCategory][field_name] > others[0]['statistics'][selectedCategory][field_name],
+        'isSmaller': current[0]['statistics'][selectedCategory][field_name] < others[0]['statistics'][selectedCategory][field_name],
+      };
     }
   }
 }
